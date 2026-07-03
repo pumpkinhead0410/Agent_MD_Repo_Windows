@@ -43,4 +43,44 @@ was moved out during that cleanup.
 
 ## Usage
 
-1. Clone or copy this repository's contents into wherever your agent looks for pers
+1. Clone or copy this repository's contents into wherever your agent looks for persistent memory
+   (for Claude Code / Cowork-style setups, that's typically a fixed path referenced from your global
+   `CLAUDE.md`).
+2. Point your agent's session-start instructions at `Claude_Memory/MEMORY.md` — it's the index and links to
+   everything else.
+3. As you work, let the agent keep `claude_info/` and `claude_log/` current. When a note turns out to be
+   project-specific, move it into that project's own memory instead of leaving it here.
+4. Skills under `caveman/` and `html-slide-deck/` can be installed/loaded independently of the memory
+   convention above; they're self-contained.
+
+## Notes
+
+- `graphify-out/` (a generated knowledge-graph cache used by the `graphify` skill) is intentionally
+  git-ignored — it's regenerated per-project on demand and shouldn't be committed.
+- This repo assumes no particular OS, language, or toolchain. If you find something in here that only makes
+  sense for one specific stack, that's a bug — please move it out.
+
+## Commit Convention
+
+Commit messages in this repository follow the [Angular commit message
+convention](https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md):
+
+```
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+- **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
+- **scope**: optional, whatever area of the repo the change touches (e.g. `feedback`, `caveman`, `readme`)
+- **subject**: imperative, present tense, no capital first letter, no trailing period
+- Lines wrapped at 100 characters
+- Reverts start with `revert: ` followed by the original commit's header, with `This reverts commit <hash>.`
+  in the body
+- Breaking changes are called out with a `BREAKING CHANGE:` line in the footer
+
+## License
+
+MIT — see [LICENSE](LICENSE).
